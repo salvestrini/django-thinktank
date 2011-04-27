@@ -1,0 +1,3 @@
+#!/bin/sh
+
+(cd project && python manage.py runserver) || exit 1

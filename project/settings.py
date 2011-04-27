@@ -1,4 +1,4 @@
-# Django settings for thinktank project.
+# Django settings for site project.
 
 import os.path
 
@@ -79,7 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'thinktank.urls'
+ROOT_URLCONF = 'site.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

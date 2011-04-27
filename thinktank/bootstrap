@@ -1,4 +1,0 @@
-#!/bin/sh
-
-rm -i database.db       || exit 1
-python manage.py syncdb || exit 1
