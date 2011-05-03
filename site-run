@@ -1,3 +1,5 @@
 #!/bin/sh
 
-(cd project && python manage.py runserver) || exit 1
+PYTHON_OPTIONS="-B"
+
+(cd project && python $PYTHON_OPTIONS manage.py runserver) || exit 1

@@ -1,4 +1,6 @@
 #!/bin/sh
 
-(cd project && rm -f database.db)       || exit 1
-(cd project && python manage.py syncdb) || exit 1
+PYTHON_OPTIONS="-B"
+
+(cd project && rm -f database.db)                       || exit 1
+(cd project && python $PYTHON_OPTIONS manage.py syncdb) || exit 1
