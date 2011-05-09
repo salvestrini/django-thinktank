@@ -1,0 +1,15 @@
+#!/bin/sh
+
+me=site-db-init
+
+PYTHON_OPTIONS="-B"
+
+source build-aux/environment/bin/activate || {
+    echo "$me: cannot activate the virtual environment"
+    exit 1
+}
+
+(cd project && rm -f database.db)                       || exit 1
+(cd project && python $PYTHON_OPTIONS manage.py syncdb) || exit 1
+
+exit 0

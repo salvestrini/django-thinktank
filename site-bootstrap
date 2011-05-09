@@ -29,7 +29,4 @@ python django/setup.py install || {
     exit 1
 }
 
-(cd project && rm -f database.db)                       || exit 1
-(cd project && python $PYTHON_OPTIONS manage.py syncdb) || exit 1
-
 exit 0
