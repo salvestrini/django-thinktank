@@ -1,5 +1,17 @@
 #!/bin/sh
 
+me=site-run
+
 PYTHON_OPTIONS="-B"
 
-(cd project && python $PYTHON_OPTIONS manage.py runserver) || exit 1
+source build-aux/environment/bin/activate || {
+    echo "$me: cannot activate the environment"
+    exit 1
+}
+
+(cd project && python $PYTHON_OPTIONS manage.py runserver) || {
+    echo "$me: cannot run the server"
+    exit 1
+}
+
+exit 0

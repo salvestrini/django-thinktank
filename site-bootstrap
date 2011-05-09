@@ -1,5 +1,7 @@
 #!/bin/sh
 
+me=site-bootstrap
+
 PYTHON_OPTIONS="-B"
 
 git submodule init || {
@@ -12,5 +14,22 @@ git submodule update || {
     exit 1
 }
 
+python build-aux/virtualenv/virtualenv.py build-aux/environment || {
+    echo "$me: cannot build the virtual environment"
+    exit 1
+}
+
+source build-aux/environment/bin/activate || {
+    echo "$me: cannot activate the virtual environment"
+    exit 1
+}
+
+python django/setup.py install || {
+    echo "$me: cannot install django into the environment"
+    exit 1
+}
+
 (cd project && rm -f database.db)                       || exit 1
 (cd project && python $PYTHON_OPTIONS manage.py syncdb) || exit 1
+
+exit 0
