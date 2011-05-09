@@ -24,7 +24,7 @@ source build-aux/environment/bin/activate || {
     exit 1
 }
 
-python django/setup.py install || {
+python build-aux/django/setup.py install || {
     echo "$me: cannot install django into the environment"
     exit 1
 }
