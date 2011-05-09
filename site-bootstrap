@@ -2,5 +2,15 @@
 
 PYTHON_OPTIONS="-B"
 
+git submodule init || {
+    echo "$me: cannot init submodule"
+    exit 1
+}
+
+git submodule update || {
+    echo "$me: cannot update submodule"
+    exit 1
+}
+
 (cd project && rm -f database.db)                       || exit 1
 (cd project && python $PYTHON_OPTIONS manage.py syncdb) || exit 1
