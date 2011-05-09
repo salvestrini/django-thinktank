@@ -15,7 +15,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME':
-            os.path.join(os.path.dirname(__file__), 'database.db'),
+            os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                         'database.db')),
                                          # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -85,7 +86,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.dirname(__file__), 'templates')
+    os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
 )
 
 INSTALLED_APPS = (
