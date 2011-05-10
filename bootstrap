@@ -12,6 +12,11 @@ git submodule update || {
     exit 1
 }
 
+rm -r -f build-aux/environment || {
+    echo "$me: cannot clean previous environment"
+    exit 1
+}
+
 python build-aux/virtualenv/virtualenv.py build-aux/environment || {
     echo "$me: cannot build the virtual environment"
     exit 1
