@@ -1,8 +1,6 @@
 #!/bin/sh
 
-me=site-bootstrap
-
-PYTHON_OPTIONS="-B"
+me=bootstrap
 
 git submodule init || {
     echo "$me: cannot init submodule"
