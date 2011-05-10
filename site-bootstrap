@@ -2,33 +2,45 @@
 
 me=site-bootstrap
 
+echo "$me: Updating repository"
 git submodule init || {
     echo "$me: cannot init submodule"
     exit 1
 }
-
 git submodule update || {
     echo "$me: cannot update submodule"
     exit 1
 }
 
+echo "$me: Building environment"
 rm -r -f build-aux/environment || {
     echo "$me: cannot clean previous environment"
     exit 1
 }
-
 python build-aux/virtualenv/virtualenv.py build-aux/environment || {
     echo "$me: cannot build the virtual environment"
     exit 1
 }
 
+echo "$me: Enabling environment"
 source build-aux/environment/bin/activate || {
     echo "$me: cannot activate the virtual environment"
     exit 1
 }
 
-python build-aux/django/setup.py install || {
+echo "$me: Building and installing django"
+#TEMPDIR="/tmp/$USER-django-build"
+#rm -r -f $TEMPDIR
+#python build-aux/django/setup.py --quiet build --build-base=$TEMPDIR || {
+#    echo "$me: cannot install django into the environment"
+#    exit 1
+#}
+python build-aux/django/setup.py --quiet install || {
     echo "$me: cannot install django into the environment"
+    exit 1
+}
+rm -r -f build-aux/django/build || {
+    echo "$me: cannot remove build directory"
     exit 1
 }
 
