@@ -7,7 +7,7 @@ source build-aux/environment/bin/activate || {
     exit 1
 }
 
-(cd project && python manage.py $1) || {
+(cd project && python manage.py $@) || {
     echo "$me: cannot manage $1"
     exit 1
 }
