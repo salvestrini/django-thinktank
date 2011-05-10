@@ -1,0 +1,20 @@
+#!/bin/sh
+
+me=site-cleanup
+
+git submodule foreach 'git reset --hard' || {
+    echo "$me: cannot reset submodule"
+    exit 1
+}
+
+rm -r -f build-aux/environment || {
+    echo "$me: cannot clean previous environment"
+    exit 1
+}
+
+rm -r -f *.py[co] || {
+    echo "$me: cannot remove compiled files"
+    exit 1
+}
+
+exit 0

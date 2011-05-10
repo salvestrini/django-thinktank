@@ -1,6 +1,6 @@
 #!/bin/sh
 
-me=bootstrap
+me=site-bootstrap
 
 git submodule init || {
     echo "$me: cannot init submodule"
