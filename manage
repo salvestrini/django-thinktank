@@ -1,0 +1,15 @@
+#!/bin/sh
+
+me=manage
+
+source build-aux/environment/bin/activate || {
+    echo "$me: cannot activate the environment"
+    exit 1
+}
+
+(cd project && python manage.py $1) || {
+    echo "$me: cannot manage $1"
+    exit 1
+}
+
+exit 0
