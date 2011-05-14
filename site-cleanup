@@ -7,7 +7,7 @@ git submodule foreach 'git reset --hard' || {
     exit 1
 }
 
-rm -r -f build-aux/environment || {
+rm -r -f extra/environment || {
     echo "$me: cannot clean previous environment"
     exit 1
 }

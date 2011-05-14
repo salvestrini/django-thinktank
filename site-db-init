@@ -2,7 +2,7 @@
 
 me=site-db-init
 
-source build-aux/environment/bin/activate || {
+source extra/environment/bin/activate || {
     echo "$me: cannot activate the virtual environment"
     exit 1
 }

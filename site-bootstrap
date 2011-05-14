@@ -13,17 +13,17 @@ git submodule update || {
 }
 
 echo "$me: Building environment"
-rm -r -f build-aux/environment || {
+rm -r -f extra/environment || {
     echo "$me: cannot clean previous environment"
     exit 1
 }
-python build-aux/virtualenv/virtualenv.py build-aux/environment || {
+python extra/virtualenv/virtualenv.py extra/environment || {
     echo "$me: cannot build the virtual environment"
     exit 1
 }
 
 echo "$me: Enabling environment"
-source build-aux/environment/bin/activate || {
+source extra/environment/bin/activate || {
     echo "$me: cannot activate the virtual environment"
     exit 1
 }
@@ -31,15 +31,15 @@ source build-aux/environment/bin/activate || {
 echo "$me: Building and installing django"
 #TEMPDIR="/tmp/$USER-django-build"
 #rm -r -f $TEMPDIR
-#python build-aux/django/setup.py --quiet build --build-base=$TEMPDIR || {
+#python extra/django/setup.py --quiet build --build-base=$TEMPDIR || {
 #    echo "$me: cannot install django into the environment"
 #    exit 1
 #}
-python build-aux/django/setup.py --quiet install || {
+python extra/django/setup.py --quiet install || {
     echo "$me: cannot install django into the environment"
     exit 1
 }
-rm -r -f build-aux/django/build || {
+rm -r -f extra/django/build || {
     echo "$me: cannot remove build directory"
     exit 1
 }
