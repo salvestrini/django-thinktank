@@ -1,4 +1,4 @@
-from django.conf.urls.defaults   import *
+from django.conf.urls.defaults   import patterns, include, url
 from django.views.generic.simple import direct_to_template
 from django.contrib              import admin
 
@@ -13,7 +13,7 @@ urlpatterns = \
               include('django.contrib.admindocs.urls')),
              
              (r'^admin/',
-              include('admin.site.urls')),
+              include(admin.site.urls)),
              
              (r'^about/$',
               direct_to_template, { 'template' : 'about.html' }),
