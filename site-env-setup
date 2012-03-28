@@ -1,0 +1,30 @@
+#!/bin/sh
+# -*- shell -*-
+
+ME="site-env-setup"
+
+SITE_ENV_DIR=site-env
+
+SITE_ENV_REQ=.${SITE_ENV_DIR}.req
+SITE_ENV_LOG=.${SITE_ENV_DIR}.log
+
+PIP_LOG=" --log=${SITE_ENV_LOG}"
+
+echo "${ME}: Building virtual environment"
+rm -r -f $SITE_ENV_DIR && virtualenv --prompt="(${SITE_ENV_DIR}) " $SITE_ENV_DIR || {
+    echo "${ME}: Cannot setup virtualenv in $SITE_ENV_DIR"
+    exit 1
+}
+
+#echo "${ME}: Making virtual environment relocatable"
+#virtualenv --relocatable $SITE_ENV_DIR || {
+#    echo "${ME}: Virtual environment cannot be relocatable"
+#    exit 1
+#}
+
+(. ${SITE_ENV_DIR}/bin/activate && pip install ${PIP_LOG} --requirement=${SITE_ENV_REQ}) || {
+    echo "${ME}: Cannot install requirements"
+    exit 1
+}
+
+echo "${ME}: Done"

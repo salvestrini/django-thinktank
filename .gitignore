@@ -1,3 +1,5 @@
-*.py[co]
-
 *~
+*.py[oc]
+
+/site-env
+.*.log

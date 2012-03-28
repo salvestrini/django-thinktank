@@ -1,6 +1,0 @@
-[submodule "extra/virtualenv"]
-	path = extra/virtualenv
-	url = git://github.com/pypa/virtualenv.git
-[submodule "extra/django"]
-	path = extra/django
-	url = git://github.com/django/django.git
