@@ -1,0 +1,16 @@
+#!/bin/sh
+# -*- shell -*-
+
+ME="env-create"
+
+SITE_ENV_DIR=site-env
+
+SITE_ENV_REQ=.${SITE_ENV_DIR}.req
+SITE_ENV_LOG=.${SITE_ENV_DIR}.log
+
+PIP_LOG=" --log=${SITE_ENV_LOG}"
+
+(. ${SITE_ENV_DIR}/bin/activate && pip install --upgrade ${PIP_LOG} --requirement=${SITE_ENV_REQ}) || {
+    echo "${ME}: Cannot update requirements"
+    exit 1
+}
