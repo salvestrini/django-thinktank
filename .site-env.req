@@ -1,2 +1,14 @@
 Django >= 1.4
 django-debug-toolbar >= 0.9.4
+django-announcements
+
+django-smileys
+#django-avatar
+#django-axes
+#django-email-changes
+#django-maintenancemode
+#django-banish
+#django-connect
+#django-badbrowser
+#django-defaultsite
+#django-xmlrpc

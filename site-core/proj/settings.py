@@ -1,3 +1,7 @@
+import os
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 # Django settings for proj project.
 
 DEBUG = True
@@ -51,7 +55,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "site-media", "media")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -62,7 +66,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(PROJECT_ROOT, "site-media", "static")
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -73,6 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -102,6 +107,8 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    # debug-toolbar related (this middleware must be loaded before all other
+    # response mangling middlewares)
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -114,6 +121,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, "templates"),
 )
 
 INSTALLED_APPS = (
@@ -128,9 +136,41 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 
+    #
+    # Externals
+    #
+
     # Uncomment the next line to enable the debug-toolbar:
     'debug_toolbar',
+
+    # Uncomment the next line to enable the django-announcements:
+    'announcements',
+
+    # Uncomment the next line to enable django-smileys
+    'smileys',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "announcements.context_processors.site_wide_announcements",
+)
+
+# Uncomment the next lines for django-smileys
+SMILEYS_URL  = os.path.join(MEDIA_URL, 'smileys/')
+#SMILEYS_CLASS
+SMILEYS_LIST = ( (':)', 'smile.gif'),
+                 (':D', 'mrgreen.gif'),
+                 (':(', 'sad.gif'),
+                 (':|', 'neutral.gif'),
+                 (';)', 'wink.gif'),
+                 (':p', 'razz.gif'),
+                 (':P', 'razz.gif'),
+                 (':o', 'surprised.gif'),
+                 (':O', 'surprised.gif'),
+                 (':s', 'confused.gif'),
+                 (':S', 'confused.gif'),
+                 (':$', 'confused.gif'),
+                 ('o_O', 'eek.gif'),
+                 )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
