@@ -1,0 +1,16 @@
+#!/bin/sh
+# -*- shell -*-
+
+ME="env-activate"
+
+SITE_ENV_DIR=site-env
+
+if test ! -e ${SITE_ENV_DIR}/bin/activate ; then
+    echo "${ME}: Have you created the environment ?"
+    exit 1
+fi
+
+${SITE_ENV_DIR}/bin/activate || {
+    echo "${ME}: Cannot activate environment"
+    exit 1
+}

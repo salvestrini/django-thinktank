@@ -1,7 +1,7 @@
 #!/bin/sh
 # -*- shell -*-
 
-ME="site-env-setup"
+ME="env-create"
 
 SITE_ENV_DIR=site-env
 
@@ -26,5 +26,3 @@ rm -r -f $SITE_ENV_DIR && virtualenv --prompt="(${SITE_ENV_DIR}) " $SITE_ENV_DIR
     echo "${ME}: Cannot install requirements"
     exit 1
 }
-
-echo "${ME}: Done"
