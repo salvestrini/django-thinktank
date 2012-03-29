@@ -3,10 +3,7 @@
 
 ME="env-create"
 
-SITE_ENV_DIR=site-env
-
-SITE_ENV_REQ=.${SITE_ENV_DIR}.req
-SITE_ENV_LOG=.${SITE_ENV_DIR}.log
+. ./.env.conf
 
 PIP_LOG=" --log=${SITE_ENV_LOG}"
 

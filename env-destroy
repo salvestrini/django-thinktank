@@ -1,0 +1,11 @@
+#!/bin/sh
+# -*- shell -*-
+
+ME="env-clean"
+
+. ./.env.conf
+
+rm -r -f $SITE_ENV_DIR && rm -f $SITE_ENV_LOG || {
+    echo "${ME}: Cannot clean environment"
+    exit 1
+}
